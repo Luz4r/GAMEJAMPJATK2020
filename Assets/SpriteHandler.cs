@@ -26,4 +26,7 @@ public class SpriteHandler : MonoBehaviour
             p_spriteRenderer.flipX = false;
         }
     }
+
+   
+
 }

@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform isTouchingRightWallChecker;
     public LayerMask checkLayer;
     public Direction keyPressed;
+    public Direction playerSide = Direction.Right;
 
     int additionalJumps;
     float lastTimeGrounded;
@@ -45,13 +46,14 @@ public class PlayerMovement : MonoBehaviour
         SetKeyPressed();
         SetCurrentMovementDirection();
         Move();
-        Dash();
+      //  Dash();
         Jump();
         BetterJump();
         CheckIfGrounded();
         CheckIfTouchingLeftWall();
         CheckIfTouchingRightWall();
     }
+
 
     void Dash()
     {
@@ -94,10 +96,13 @@ public class PlayerMovement : MonoBehaviour
         if (x > 0)
         {
             keyPressed = Direction.Right;
+            playerSide = Direction.Right;
+
         }
         else if (x < 0)
         {
             keyPressed = Direction.Left;
+            playerSide = Direction.Left;
         }
         else
         {
@@ -105,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    
     void Move()
     {
 
