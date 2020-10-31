@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthSystem : MonoBehaviour
+public class HealthSystem : MonoBehaviour
 {
     public float maxHP = 100f;
 
-    private EnemyHealthBar healthBar;
+    private HealthBar healthBar;
     private float currentHP;
     private void Start()
     {
-        healthBar = GetComponentInChildren<EnemyHealthBar>();
+        healthBar = GetComponentInChildren<HealthBar>();
         currentHP = maxHP;
     }
 
@@ -26,6 +26,10 @@ public class EnemyHealthSystem : MonoBehaviour
             else
             {
                 healthBar.SetSize(0f);
+            }
+            if(currentHP <= maxHP/3)
+            {
+                healthBar.SetColor();
             }
         }
     }
