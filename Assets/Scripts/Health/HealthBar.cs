@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
     private Transform bar;
 
@@ -14,5 +14,10 @@ public class EnemyHealthBar : MonoBehaviour
     public void SetSize(float sizeNormalized)
     {
         bar.localScale = new Vector3(sizeNormalized, 1f);
+    }
+
+    public void SetColor()
+    {
+        bar.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
     }
 }

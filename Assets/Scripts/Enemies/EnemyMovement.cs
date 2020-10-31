@@ -87,5 +87,10 @@ public class EnemyMovement : MonoBehaviour
         {
             vecMovement *= -1;
         }
+        
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            player.GetComponent<HealthSystem>().DealDamage(10f);
+        }
     }
 }
