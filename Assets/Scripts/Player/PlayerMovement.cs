@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform isTouchingLeftWallChecker;
     public Transform isTouchingRightWallChecker;
     public LayerMask checkLayer;
+
+    [HideInInspector]
+    public bool isGrounded = false;
+    [HideInInspector]
     public Direction keyPressed;
     public Direction playerSide = Direction.Right;
 
@@ -29,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     float lastTimeGrounded;
     float lastTimeDashed;
     float speed = 0;
-    bool isGrounded = false;
     bool isTouchingLeftWall = false;
     bool isTouchingRightWall = false;
     Direction currentMovementDirection;
