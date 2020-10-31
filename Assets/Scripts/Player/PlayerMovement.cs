@@ -5,19 +5,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Direction keyPressed;
+    Direction currentMovementDirection;
+    
     Rigidbody2D p_rigidbody2D;
     float speed = 0;
     public float acceleration = 10;
     public float deceleration = 10;
-
-    public float dashForce = 10;
-    public float rememberDashedFor = 300;
-    float lastTimeDashed = 0;
+    
 
     public float jumpForce;
     public float maxSpeed = 7;
-    public float timeToMaxSpeed = 5;
-    float side;
 
     bool isGrounded = false;
     public Transform isGroundedChecker;
@@ -49,55 +47,99 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetKeyPressed();
+        SetCurrentMovementDirection();
         Move();
         Jump();
         BetterJump();
-        Dash();
         CheckIfGrounded();
         CheckIfTouchingLeftWall();
         CheckIfTouchingRightWall();
     }
 
-    void Dash()
-    {
+    void SetCurrentMovementDirection() {
+        float currentSpeed = p_rigidbody2D.velocity.x;
 
-        if (Time.time - lastTimeDashed <= rememberDashedFor && Input.GetKeyDown(KeyCode.LeftShift))
+        if (currentSpeed > 0)
         {
-            float x = Input.GetAxisRaw("Horizontal");
+            currentMovementDirection = Direction.Right;
+        }
+        else if (currentSpeed < 0) {
+            currentMovementDirection = Direction.Left;
+        } else
+        {
+            currentMovementDirection = Direction.None;
+        }
+    }
+    void SetKeyPressed() {
+        float x = Input.GetAxisRaw("Horizontal");
 
-            float velocity = x * dashForce;
-            p_rigidbody2D.velocity = new Vector2(velocity, p_rigidbody2D.velocity.y);
-            
-            lastTimeDashed = Time.time;
-
+        if (x > 0)
+        {
+            keyPressed = Direction.Right;
+        }
+        else if (x < 0)
+        {
+            keyPressed = Direction.Left;
+        }
+        else {
+            keyPressed = Direction.None;
         }
     }
 
-        void Move() {
-        float x = Input.GetAxisRaw("Horizontal");
 
+    void Move() {
 
-        
-        if (x < 0 && speed < maxSpeed && !isTouchingLeftWall)
+        if (keyPressed == Direction.Left)
         {
-            speed = speed - acceleration * Time.deltaTime;
-        }
-        else if (x > 0 && speed > -maxSpeed && !isTouchingRightWall)
-        {
-            speed = speed + acceleration * Time.deltaTime;
-        }
-        else
-        {
-            if (speed > deceleration * Time.deltaTime)
+            if (currentMovementDirection == Direction.Left || currentMovementDirection == Direction.None)
             {
+                if (!isTouchingLeftWall)
+                {
+                    if (speed > -maxSpeed)
+                    {
+                        speed = speed - acceleration * Time.deltaTime;
+                    }
+                }
+            }
+            else if (currentMovementDirection == Direction.Right) {
                 speed = speed - deceleration * Time.deltaTime;
             }
-            else if (speed < -deceleration * Time.deltaTime)
+        }
+
+        else
+
+        if (keyPressed == Direction.Right)
+        {
+            if (currentMovementDirection == Direction.Right || currentMovementDirection == Direction.None)
+            {
+                if (!isTouchingRightWall)
+                {
+                    if (speed < maxSpeed)
+                    {
+                        speed = speed + acceleration * Time.deltaTime;
+                    }
+                }
+            }
+            else if (currentMovementDirection == Direction.Left)
             {
                 speed = speed + deceleration * Time.deltaTime;
             }
-            else speed = 0;
         }
+
+        else
+
+        if (keyPressed == Direction.None) {
+            if (currentMovementDirection == Direction.Left)
+            {
+                speed = speed + deceleration * Time.deltaTime;
+            }
+            else if (currentMovementDirection == Direction.Right)
+            {
+                speed = speed - deceleration * Time.deltaTime;
+            }
+        }
+        
         if (isTouchingRightWall && speed > 0) {
             speed = 0;
         }
@@ -129,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void CheckIfTouchingLeftWall() {
         Collider2D colliders = Physics2D.OverlapCircle(isTouchingLeftWallChecker.position, checkWallRadius, wallLayer);
+
         if (colliders != null)
         {
             isTouchingLeftWall = true;
