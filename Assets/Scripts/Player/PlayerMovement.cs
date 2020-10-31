@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -98,18 +99,16 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (speed > -maxSpeed)
                     {
-                        speed = speed - acceleration * Time.deltaTime;
+                        speed -= acceleration * Time.deltaTime;
                     }
                 }
             }
             else if (currentMovementDirection == Direction.Right) {
-                speed = speed - deceleration * Time.deltaTime;
+                speed -= deceleration * Time.deltaTime;
             }
         }
 
-        else
-
-        if (keyPressed == Direction.Right)
+        else if (keyPressed == Direction.Right)
         {
             if (currentMovementDirection == Direction.Right || currentMovementDirection == Direction.None)
             {
@@ -117,26 +116,24 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (speed < maxSpeed)
                     {
-                        speed = speed + acceleration * Time.deltaTime;
+                        speed += acceleration * Time.deltaTime;
                     }
                 }
             }
             else if (currentMovementDirection == Direction.Left)
             {
-                speed = speed + deceleration * Time.deltaTime;
+                speed += deceleration * Time.deltaTime;
             }
         }
 
-        else
-
-        if (keyPressed == Direction.None) {
+        else if (keyPressed == Direction.None) {
             if (currentMovementDirection == Direction.Left)
             {
-                speed = speed + deceleration * Time.deltaTime;
+                speed += deceleration * Time.deltaTime;
             }
             else if (currentMovementDirection == Direction.Right)
             {
-                speed = speed - deceleration * Time.deltaTime;
+                speed -= deceleration * Time.deltaTime;
             }
         }
         
@@ -146,8 +143,7 @@ public class PlayerMovement : MonoBehaviour
         if (isTouchingLeftWall && speed < 0) {
             speed = 0;
         }
-
-            p_rigidbody2D.velocity = new Vector2(speed, p_rigidbody2D.velocity.y);
+        p_rigidbody2D.velocity = new Vector2(speed, p_rigidbody2D.velocity.y);
     }
 
     void Jump()
