@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Platformer : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D p_rigidbody2D;
     float speed = 0;
