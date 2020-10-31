@@ -456,7 +456,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801239392048091613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.505, z: 0}
+  m_LocalPosition: {x: 0, y: -1.268, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1801239392525492165}
@@ -571,7 +571,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b38700582d1744b4f93dd381a32e3681, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc9d9ba2fbbcdd046a502d2d18b42d31, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -616,18 +616,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.00054883957}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 2.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2.4642467}
   m_EdgeRadius: 0
 --- !u!114 &1801239392525492161
 MonoBehaviour:
@@ -641,24 +641,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce75c3b8fd6a32d408a225aa0f27ae4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyPressed: 0
+  dashForce: 100
   acceleration: 20
   deceleration: 100
   jumpForce: 12
   maxSpeed: 30
   isGroundedChecker: {fileID: 1801239392048091602}
-  checkGroundRadius: 0.05
-  groundLayer:
+  checkerRadius: 0.05
+  checkLayer:
     serializedVersion: 2
     m_Bits: 256
-  checkWallRadius: 0.05
   isTouchingLeftWallChecker: {fileID: 1801239392443345563}
   isTouchingRightWallChecker: {fileID: 1801239393206814923}
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 256
   fallMultiplier: 4
   lowJumpMultiplier: 2
   rememberGroundedFor: 0.1
+  rememberDashedFor: 0.2
   defaultAdditionalJumps: 1
 --- !u!114 &1537304203
 MonoBehaviour:
