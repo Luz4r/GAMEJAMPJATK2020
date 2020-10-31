@@ -33,4 +33,21 @@ public class HealthSystem : MonoBehaviour
             }
         }
     }
+    public void Heal(float healValue)
+    {
+        if(currentHP < maxHP)
+        {
+            float missingHP = maxHP - currentHP;
+            if(missingHP <= healValue)
+            {
+                currentHP = maxHP;
+                healthBar.SetSize(maxHP / maxHP);
+            }
+            else
+            {
+                currentHP += healValue;
+                healthBar.SetSize(currentHP / maxHP);
+            }
+        }
+    }
 }
