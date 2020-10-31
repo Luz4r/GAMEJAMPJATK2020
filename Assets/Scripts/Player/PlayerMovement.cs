@@ -1,43 +1,41 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 public class PlayerMovement : MonoBehaviour
 {
-    Direction keyPressed;
-    Direction currentMovementDirection;
-    
     Rigidbody2D p_rigidbody2D;
-    float speed = 0;
-    public float acceleration = 10;
-    public float deceleration = 10;
-    
-
-    public float jumpForce;
-    public float maxSpeed = 7;
-
-    bool isGrounded = false;
-    public Transform isGroundedChecker;
-    public float checkGroundRadius = 0.05f;
-    public LayerMask groundLayer;
-
-    bool isTouchingLeftWall = false;
-    bool isTouchingRightWall = false;
-    public float checkWallRadius = 0.05f;
-    public Transform isTouchingLeftWallChecker;
-    public Transform isTouchingRightWallChecker;
-    public LayerMask wallLayer;
-
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
-
-    public float rememberGroundedFor;
-    float lastTimeGrounded;
 
     public int defaultAdditionalJumps = 1;
+    public float acceleration = 20;
+    public float deceleration = 100;
+    public float maxSpeed = 30;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    public float dashForce = 100;
+    public float jumpForce = 12;
+    public float checkerRadius = 0.05f;
+    public float rememberGroundedFor = 0.2f;
+    public float rememberDashedFor = 0.2f;
+    public Transform isGroundedChecker;
+    public Transform isTouchingLeftWallChecker;
+    public Transform isTouchingRightWallChecker;
+    public LayerMask checkLayer;
+
+    [HideInInspector]
+    public bool isGrounded = false;
+    [HideInInspector]
+    public Direction keyPressed;
+    public Direction playerSide = Direction.Right;
+
     int additionalJumps;
+    float lastTimeGrounded;
+    float lastTimeDashed;
+    float speed = 0;
+    bool isTouchingLeftWall = false;
+    bool isTouchingRightWall = false;
+    Direction currentMovementDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         SetKeyPressed();
         SetCurrentMovementDirection();
         Move();
+      //  Dash();
         Jump();
         BetterJump();
         CheckIfGrounded();
@@ -58,38 +57,65 @@ public class PlayerMovement : MonoBehaviour
         CheckIfTouchingRightWall();
     }
 
-    void SetCurrentMovementDirection() {
+
+    void Dash()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            if (keyPressed == Direction.Left)
+            {
+                speed -= dashForce;
+            }
+            else
+            if (keyPressed == Direction.Right)
+            {
+                speed += dashForce;
+            }
+        }
+    }
+
+    void SetCurrentMovementDirection()
+    {
         float currentSpeed = p_rigidbody2D.velocity.x;
 
         if (currentSpeed > 0)
         {
             currentMovementDirection = Direction.Right;
         }
-        else if (currentSpeed < 0) {
+        else if (currentSpeed < 0)
+        {
             currentMovementDirection = Direction.Left;
-        } else
+        }
+        else
         {
             currentMovementDirection = Direction.None;
         }
     }
-    void SetKeyPressed() {
+
+    void SetKeyPressed()
+    {
         float x = Input.GetAxisRaw("Horizontal");
 
         if (x > 0)
         {
             keyPressed = Direction.Right;
+            playerSide = Direction.Right;
+
         }
         else if (x < 0)
         {
             keyPressed = Direction.Left;
+            playerSide = Direction.Left;
         }
-        else {
+        else
+        {
             keyPressed = Direction.None;
         }
     }
 
-
-    void Move() {
+    
+    void Move()
+    {
 
         if (keyPressed == Direction.Left)
         {
@@ -99,16 +125,19 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (speed > -maxSpeed)
                     {
-                        speed -= acceleration * Time.deltaTime;
+                        speed = speed - acceleration * Time.deltaTime;
                     }
                 }
             }
-            else if (currentMovementDirection == Direction.Right) {
-                speed -= deceleration * Time.deltaTime;
+            else if (currentMovementDirection == Direction.Right)
+            {
+                speed = speed - deceleration * Time.deltaTime;
             }
         }
 
-        else if (keyPressed == Direction.Right)
+        else
+
+        if (keyPressed == Direction.Right)
         {
             if (currentMovementDirection == Direction.Right || currentMovementDirection == Direction.None)
             {
@@ -116,33 +145,50 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (speed < maxSpeed)
                     {
-                        speed += acceleration * Time.deltaTime;
+                        speed = speed + acceleration * Time.deltaTime;
                     }
                 }
             }
             else if (currentMovementDirection == Direction.Left)
             {
-                speed += deceleration * Time.deltaTime;
+                speed = speed + deceleration * Time.deltaTime;
             }
         }
 
-        else if (keyPressed == Direction.None) {
+        else
+
+        if (keyPressed == Direction.None)
+        {
             if (currentMovementDirection == Direction.Left)
             {
-                speed += deceleration * Time.deltaTime;
+                speed = speed + deceleration * Time.deltaTime;
+
+                if (speed > -1)
+                {
+                    speed = 0;
+                }
             }
             else if (currentMovementDirection == Direction.Right)
             {
-                speed -= deceleration * Time.deltaTime;
+                speed = speed - deceleration * Time.deltaTime;
+
+                if (speed < 1)
+                {
+                    speed = 0;
+                }
             }
         }
-        
-        if (isTouchingRightWall && speed > 0) {
+
+        if (isTouchingRightWall && speed > 0)
+        {
             speed = 0;
         }
-        if (isTouchingLeftWall && speed < 0) {
+        if (isTouchingLeftWall && speed < 0)
+        {
             speed = 0;
         }
+
+
         p_rigidbody2D.velocity = new Vector2(speed, p_rigidbody2D.velocity.y);
     }
 
@@ -154,6 +200,7 @@ public class PlayerMovement : MonoBehaviour
             additionalJumps--;
         }
     }
+
     void BetterJump()
     {
         if (p_rigidbody2D.velocity.y < 0)
@@ -165,8 +212,10 @@ public class PlayerMovement : MonoBehaviour
             p_rigidbody2D.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
-    void CheckIfTouchingLeftWall() {
-        Collider2D colliders = Physics2D.OverlapCircle(isTouchingLeftWallChecker.position, checkWallRadius, wallLayer);
+
+    void CheckIfTouchingLeftWall()
+    {
+        Collider2D colliders = Physics2D.OverlapCircle(isTouchingLeftWallChecker.position, checkerRadius, checkLayer);
 
         if (colliders != null)
         {
@@ -178,8 +227,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void CheckIfTouchingRightWall() {
-        Collider2D colliders = Physics2D.OverlapCircle(isTouchingRightWallChecker.position, checkWallRadius, wallLayer);
+    void CheckIfTouchingRightWall()
+    {
+        Collider2D colliders = Physics2D.OverlapCircle(isTouchingRightWallChecker.position, checkerRadius, checkLayer);
         if (colliders != null)
         {
             isTouchingRightWall = true;
@@ -192,7 +242,7 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckIfGrounded()
     {
-        Collider2D colliders = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
+        Collider2D colliders = Physics2D.OverlapCircle(isGroundedChecker.position, checkerRadius, checkLayer);
         if (colliders != null)
         {
             isGrounded = true;
