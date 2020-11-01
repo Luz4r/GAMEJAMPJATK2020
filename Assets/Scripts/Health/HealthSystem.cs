@@ -8,7 +8,8 @@ public class HealthSystem : MonoBehaviour
     public float maxHP = 100f;
 
     private HealthBar healthBar;
-    private float currentHP;
+    [HideInInspector]
+    public float currentHP;
     private void Start()
     {
         healthBar = GetComponentInChildren<HealthBar>();
