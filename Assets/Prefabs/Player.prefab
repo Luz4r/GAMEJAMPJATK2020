@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 97521546}
   - component: {fileID: 97521547}
   m_Layer: 0
-  m_Name: heart-wide (1)
+  m_Name: dash-icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ RectTransform:
   m_GameObject: {fileID: 97521545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18.05, y: 18.05, z: 18.05}
+  m_LocalScale: {x: 20, y: 20, z: 18.05}
   m_Children: []
   m_Father: {fileID: 699965610}
   m_RootOrder: 2
@@ -72,11 +72,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1949249223
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 48e93c83da61db74a9abad71daaa9c44, type: 3}
-  m_Color: {r: 0.35857958, g: 0.3646442, b: 0.9622642, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 550317e7e98cf6b42939d6a4758cfe7b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -856,7 +856,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: e8b188ee542b9814ab368b56b878a9eb, type: 3}
-  m_Color: {r: 0, g: 0.7203593, b: 1, a: 1}
+  m_Color: {r: 0.8584906, g: 0.52219933, b: 0.03644534, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1681,7 +1681,7 @@ RectTransform:
   m_GameObject: {fileID: 9116054311065237673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18.05, y: 18.05, z: 18.05}
+  m_LocalScale: {x: 15, y: 15, z: 18.05}
   m_Children: []
   m_Father: {fileID: 699965610}
   m_RootOrder: 0
