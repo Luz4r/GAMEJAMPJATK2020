@@ -18,25 +18,19 @@ public class HealthSystem : MonoBehaviour
 
     public void DealDamage(float dmg)
     {
-        if (currentHP > 0)
+        if (dmg < currentHP)
         {
-            if (dmg <= maxHP)
-            {
-                currentHP -= dmg;
-                healthBar.SetSize(currentHP / maxHP);
-            }
-            else
-            {
-                healthBar.SetSize(0f);
-            }
-            if(currentHP <= maxHP/3)
-            {
-                healthBar.SetColor();
-            }
+            currentHP -= dmg;
+            healthBar.SetSize(currentHP / maxHP);
         }
         else
         {
+            healthBar.SetSize(0f);
             Dead();
+        }
+        if(currentHP <= maxHP/3)
+        {
+            healthBar.SetColor();
         }
     }
 
@@ -58,7 +52,7 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    private void Dead()
+    public void Dead()
     {
         if(!gameObject.CompareTag("Player"))
         {
