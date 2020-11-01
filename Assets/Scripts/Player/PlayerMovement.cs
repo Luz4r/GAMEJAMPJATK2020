@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool isDashReady = true;
     [HideInInspector]
-    public Direction keyPressed;
+    public Direction keyPressed = Direction.None;
     public Direction playerSide = Direction.Right;
 
     int additionalJumps;
