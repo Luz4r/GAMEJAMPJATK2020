@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public float maxHP = 100f;
+    public GameObject gameOver;
 
     private HealthBar healthBar;
     private float currentHP;
@@ -64,8 +65,10 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-        //TODO add dead screen
-        //TOOD kill player
+            //TODO add dead screen
+            //TOOD kill player
+            gameOver.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }
