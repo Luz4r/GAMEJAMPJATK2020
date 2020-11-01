@@ -9,11 +9,13 @@ public class EnemyMovement : MonoBehaviour
     public float patrolRange = 10f;
     public float jumpForce = 5f;
 
+    [HideInInspector]
+    public bool isAggro;
+
     private float currentSpeed;
     private Rigidbody2D rb;
     private Vector2 vecMovement;
     private GameObject player;
-    private bool isAggro;
     private float xMovementLimitRight;
     private float xMovementLimitLeft;
 
@@ -60,7 +62,7 @@ public class EnemyMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);    //TODO zawraca po skoku
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
@@ -69,7 +71,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    protected void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
