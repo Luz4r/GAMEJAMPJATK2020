@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    Rigidbody2D player;
-    // Start is called before the first frame update
+    AudioSource[] sources;
     void Start()
     {
-        player = GetComponent<Rigidbody2D>();
+        sources = GetComponents<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void StepSound()
     {
-        if (player.velocity.magnitude > 0)
-        {
-            Debug.Log("MOVING");
-        }
+        sources[0].Play(0);
+    }
+
+    void JumpSound()
+    {
+        sources[1].Play(0);
     }
 }
