@@ -747,7 +747,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5539df722fa225149b230c23f7b5fb48, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -796,11 +796,11 @@ MonoBehaviour:
   maxSpeed: 30
   fallMultiplier: 4
   lowJumpMultiplier: 2
-  dashForce: 50
+  dashForce: 400
   jumpForce: 12
   checkerRadius: 0.05
   rememberGroundedFor: 0.1
-  rememberDashedFor: 0.2
+  dashDelay: 3
   isGroundedChecker: {fileID: 1801239392048091602}
   isTouchingLeftWallChecker: {fileID: 1801239392443345563}
   isTouchingRightWallChecker: {fileID: 1801239393206814923}
