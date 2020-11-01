@@ -1121,6 +1121,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1801239392525492161, guid: aff9863032f733c4f8d2afc5f4000fdf,
+        type: 3}
+      propertyPath: dash
+      value: 
+      objectReference: {fileID: 5957321829627986255, guid: e5ddeb9a824ba9d4ea1e30eca974d5a5,
+        type: 3}
+    - target: {fileID: 1801239392525492161, guid: aff9863032f733c4f8d2afc5f4000fdf,
+        type: 3}
+      propertyPath: dashRight
+      value: 
+      objectReference: {fileID: 6211969217870894503, guid: 46c7d0dd258a09141b75dc60c1d4f742,
+        type: 3}
+    - target: {fileID: 1801239392525492161, guid: aff9863032f733c4f8d2afc5f4000fdf,
+        type: 3}
+      propertyPath: dashLeft
+      value: 
+      objectReference: {fileID: 4642994811460421068, guid: c064fa9854c7e0747bd77d928bf06697,
+        type: 3}
+    - target: {fileID: 1801239392525492161, guid: aff9863032f733c4f8d2afc5f4000fdf,
+        type: 3}
+      propertyPath: dashDelay
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1801239392525492165, guid: aff9863032f733c4f8d2afc5f4000fdf,
         type: 3}
       propertyPath: m_LocalPosition.x
