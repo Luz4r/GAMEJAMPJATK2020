@@ -9,10 +9,6 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("first");
     }
-    public void ShowCredits()
-    {
-
-    }
     public void Exit()
     {
         Debug.Log("EXIT");
