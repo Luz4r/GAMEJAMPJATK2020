@@ -1142,6 +1142,7 @@ MonoBehaviour:
   isDashReady: 1
   keyPressed: 0
   playerSide: 1
+  dashSound: {fileID: 8300000, guid: 86d36ad0ca3fdc049b8013e993cba9b9, type: 3}
 --- !u!114 &1537304203
 MonoBehaviour:
   m_ObjectHideFlags: 0

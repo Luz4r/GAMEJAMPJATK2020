@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     public Direction keyPressed = Direction.None;
     public Direction playerSide = Direction.Right;
 
+    private AudioSource aSource;
+    public AudioClip dashSound;
+
     int additionalJumps;
     float lastTimeGrounded;
     float lastTimeDashed = 0;
@@ -47,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        aSource = GetComponent<AudioSource>();
         p_rigidbody2D = GetComponent<Rigidbody2D>();
         db = GetComponentInChildren<DashBar>();
     }
@@ -73,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isDashReady)
             {
+                aSource.PlayOneShot(dashSound);
                 if (playerSide == Direction.Left)
                 {
                     speed -= dashForce;
