@@ -8,7 +8,8 @@ public class HealthSystem : MonoBehaviour
     public GameObject gameOver;
 
     private HealthBar healthBar;
-    private float currentHP;
+    [HideInInspector]
+    public float currentHP;
     private void Start()
     {
         healthBar = GetComponentInChildren<HealthBar>();
