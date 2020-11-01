@@ -60,10 +60,9 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-            //TODO add dead screen
-            //TOOD kill player
             gameOver.SetActive(true);
             Time.timeScale = 0f;
+            //print(Time.timeScale);
         }
     }
 }
