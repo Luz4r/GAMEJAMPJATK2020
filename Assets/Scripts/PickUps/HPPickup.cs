@@ -6,10 +6,7 @@ public class HPPickup : MonoBehaviour
 {
     public float healValue = 5f;
     public GameObject particles;
-
-    void Start()
-    {
-    }
+    public AudioClip drinkSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,6 +14,7 @@ public class HPPickup : MonoBehaviour
         {
             collision.gameObject.GetComponent<HealthSystem>().Heal(healValue);
             Instantiate(particles, GameObject.FindGameObjectWithTag("Player").transform);
+            collision.gameObject.GetComponent<AudioSource>().PlayOneShot(drinkSound);
             Destroy(gameObject);
         }
     }

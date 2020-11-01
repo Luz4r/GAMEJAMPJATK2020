@@ -83,5 +83,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1532075570778050250, guid: f139f06dc1c46144fa7dfa0414b643da,
+        type: 3}
+      propertyPath: bulletDamage
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f139f06dc1c46144fa7dfa0414b643da, type: 3}

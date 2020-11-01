@@ -32,7 +32,12 @@ public class HealthSystem : MonoBehaviour
                 healthBar.SetColor();
             }
         }
+        else
+        {
+            Dead();
+        }
     }
+
     public void Heal(float healValue)
     {
         if(currentHP < maxHP)
@@ -48,6 +53,19 @@ public class HealthSystem : MonoBehaviour
                 currentHP += healValue;
                 healthBar.SetSize(currentHP / maxHP);
             }
+        }
+    }
+
+    private void Dead()
+    {
+        if(!gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+        //TODO add dead screen
+        //TOOD kill player
         }
     }
 }
