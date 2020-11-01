@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dfa012cd52a30499b4340da4eff1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healValue: 5
+  healValue: 10
   particles: {fileID: 7929319934717358507, guid: 2d0d563c2d970424faa7db5eba452c22,
     type: 3}
   drinkSound: {fileID: 8300000, guid: afddaf18e2967f541b34ee7d234acfad, type: 3}
