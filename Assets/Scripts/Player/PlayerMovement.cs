@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     public Transform isTouchingLeftWallChecker;
     public Transform isTouchingRightWallChecker;
     public LayerMask checkLayer;
+    public ParticleSystem dashLeft;
+    public ParticleSystem dashRight;
+
 
     [HideInInspector]
     public bool isGrounded = false;
@@ -70,11 +73,13 @@ public class PlayerMovement : MonoBehaviour
                 if (playerSide == Direction.Left)
                 {
                     speed -= dashForce;
+                    Instantiate(dashLeft, transform.position, transform.rotation);
                 }
                 else
                 if (playerSide == Direction.Right)
                 {
                     speed += dashForce;
+                    Instantiate(dashRight, transform);
                 }
                 lastTimeDashed = Time.time;
                 isDashReady = false;
