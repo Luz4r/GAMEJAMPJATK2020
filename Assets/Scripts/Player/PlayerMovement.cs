@@ -42,10 +42,13 @@ public class PlayerMovement : MonoBehaviour
     bool isTouchingRightWall = false;
     Direction currentMovementDirection;
 
+    DashBar db;
+
     // Start is called before the first frame update
     void Start()
     {
         p_rigidbody2D = GetComponent<Rigidbody2D>();
+        db = GetComponentInChildren<DashBar>();
     }
 
     // Update is called once per frame
@@ -83,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 lastTimeDashed = Time.time;
                 isDashReady = false;
+                db.SetSize(0f);
             }
         }
     }
@@ -92,6 +96,23 @@ public class PlayerMovement : MonoBehaviour
             print("dupa");
            isDashReady = true;
         }
+
+        if (isDashReady)
+        {
+            db.SetSize(1);
+        }
+        else {
+            if ((Time.time - lastTimeDashed) / dashDelay < 1)
+            {
+                db.SetSize((Time.time - lastTimeDashed) / dashDelay);
+            }
+            else {
+                db.SetSize(1f);
+            }
+        }
+
+
+
     }
 
     void SetCurrentMovementDirection()
