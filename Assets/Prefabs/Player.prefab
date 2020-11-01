@@ -800,7 +800,7 @@ MonoBehaviour:
   jumpForce: 12
   checkerRadius: 0.05
   rememberGroundedFor: 0.1
-  rememberDashedFor: 0.2
+  dashDelay: 300
   isGroundedChecker: {fileID: 1801239392048091602}
   isTouchingLeftWallChecker: {fileID: 1801239392443345563}
   isTouchingRightWallChecker: {fileID: 1801239393206814923}
@@ -808,6 +808,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isGrounded: 0
+  isDashReady: 1
   keyPressed: 0
   playerSide: 1
 --- !u!114 &1537304203
@@ -872,6 +873,7 @@ MonoBehaviour:
   bulletPrefabs:
   - {fileID: 892420588429158596, guid: da62ba171e0bcee479348a8a33a7521e, type: 3}
   - {fileID: 1121151889216387681, guid: f139f06dc1c46144fa7dfa0414b643da, type: 3}
+  ps: {fileID: 7817034036103518241, guid: 657846a5593104d43a490fbc44bd270a, type: 3}
 --- !u!1 &1801239393206814922
 GameObject:
   m_ObjectHideFlags: 0

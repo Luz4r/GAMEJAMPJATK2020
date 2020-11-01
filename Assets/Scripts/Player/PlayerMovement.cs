@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 12;
     public float checkerRadius = 0.05f;
     public float rememberGroundedFor = 0.2f;
-    public float rememberDashedFor = 0.2f;
+    public float dashDelay = 300;
     public Transform isGroundedChecker;
     public Transform isTouchingLeftWallChecker;
     public Transform isTouchingRightWallChecker;
@@ -26,12 +26,14 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool isGrounded = false;
     [HideInInspector]
-    public Direction keyPressed;
+    public bool isDashReady = true;
+    [HideInInspector]
+    public Direction keyPressed = Direction.None;
     public Direction playerSide = Direction.Right;
 
     int additionalJumps;
     float lastTimeGrounded;
-    float lastTimeDashed;
+    float lastTimeDashed = 0;
     float speed = 0;
     bool isTouchingLeftWall = false;
     bool isTouchingRightWall = false;
@@ -49,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
         SetKeyPressed();
         SetCurrentMovementDirection();
         Move();
-      //  Dash();
+        CheckIfIsDashReady();
+        Dash();
         Jump();
         BetterJump();
         CheckIfGrounded();
@@ -60,17 +63,29 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (keyPressed == Direction.Left)
+            if (isDashReady)
             {
-                speed -= dashForce;
+                if (playerSide == Direction.Left)
+                {
+                    speed -= dashForce;
+                }
+                else
+                if (playerSide == Direction.Right)
+                {
+                    speed += dashForce;
+                }
+                lastTimeDashed = Time.time;
+                isDashReady = false;
             }
-            else
-            if (keyPressed == Direction.Right)
-            {
-                speed += dashForce;
-            }
+        }
+    }
+
+    void CheckIfIsDashReady() {
+        if (Time.time - lastTimeDashed >= dashDelay) {
+            print("dupa");
+           isDashReady = true;
         }
     }
 
@@ -116,6 +131,16 @@ public class PlayerMovement : MonoBehaviour
     
     void Move()
     {
+        if (speed > maxSpeed * 1.5)
+        {
+            speed -= speed / 2;
+        }
+        else if (speed < -(maxSpeed * 1.5))
+        {
+            speed += -(speed / 2);
+
+        }
+
 
         if (keyPressed == Direction.Left)
         {
