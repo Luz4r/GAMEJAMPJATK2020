@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckIfIsDashReady() {
         if (Time.time - lastTimeDashed >= dashDelay) {
+            print("dupa");
            isDashReady = true;
         }
     }
