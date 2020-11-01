@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : MonoBehaviour
 {
     public float maxHP = 100f;
 
     private HealthBar healthBar;
-    private float currentHP;
+    [HideInInspector]
+    public float currentHP;
     private void Start()
     {
         healthBar = GetComponentInChildren<HealthBar>();
@@ -64,8 +66,7 @@ public class HealthSystem : MonoBehaviour
         }
         else
         {
-        //TODO add dead screen
-        //TOOD kill player
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); //TODO game over scene
         }
     }
 }

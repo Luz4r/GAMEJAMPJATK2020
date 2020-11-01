@@ -29,7 +29,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.79, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7929319934835468324}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dfa012cd52a30499b4340da4eff1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healValue: 5
+  healValue: 10
   particles: {fileID: 7929319934717358507, guid: 2d0d563c2d970424faa7db5eba452c22,
     type: 3}
   drinkSound: {fileID: 8300000, guid: afddaf18e2967f541b34ee7d234acfad, type: 3}
@@ -125,3 +126,78 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &7544387052132579179
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5335415944077413297}
+    m_Modifications:
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484583866189848402, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+        type: 3}
+      propertyPath: m_Name
+      value: EnergyDrinkParticle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f6b6ed35bf054844c9cdc5c59cdebe98, type: 3}
+--- !u!4 &7929319934835468324 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 484583866189848399, guid: f6b6ed35bf054844c9cdc5c59cdebe98,
+    type: 3}
+  m_PrefabInstance: {fileID: 7544387052132579179}
+  m_PrefabAsset: {fileID: 0}
