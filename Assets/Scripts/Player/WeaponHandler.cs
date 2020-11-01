@@ -8,6 +8,7 @@ public class WeaponHandler : MonoBehaviour
     public GameObject bulletSpawnerLeft;
     public GameObject bulletSpawnerRight;
     public List<GameObject> bulletPrefabs;
+    public ParticleSystem ps;
     PlayerMovement p_playerMovement;
    
 
@@ -30,6 +31,7 @@ public class WeaponHandler : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawnerRight.transform);
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2(bulletSpeed, rb.velocity.y);
+                Instantiate(ps, bulletSpawnerRight.transform);
             }
             else
             if (p_playerMovement.playerSide == Direction.Left)
@@ -37,6 +39,8 @@ public class WeaponHandler : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawnerLeft.transform);
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2(-bulletSpeed, rb.velocity.y);
+                Instantiate(ps, bulletSpawnerLeft.transform);
+
 
             }
         }
