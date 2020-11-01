@@ -19,23 +19,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7478619627846557620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2629641350813968276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c27a0ad3c929c9f4a915a805629007e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idleSpeed: 5
-  aggroSpeed: 10
-  patrolRange: 10
-  jumpForce: 5
-  isAggro: 0
 --- !u!114 &1198782555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,8 +114,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: ErrorEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4360313943694039319, guid: 234893ff322c1d143b9884c882fd2c22, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 234893ff322c1d143b9884c882fd2c22, type: 3}
 --- !u!1 &2629641350813968276 stripped
 GameObject:

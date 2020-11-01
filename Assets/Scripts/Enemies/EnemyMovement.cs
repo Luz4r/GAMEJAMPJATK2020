@@ -57,11 +57,6 @@ public class EnemyMovement : MonoBehaviour
         vecMovement = new Vector2(player.transform.position.x - transform.position.x, 0.0f).normalized;
     }
 
-    private void Jump()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);    //TODO zawraca po skoku
-    }
-
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -93,6 +88,8 @@ public class EnemyMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             player.GetComponent<HealthSystem>().DealDamage(10f);
+            Rigidbody2D playerRB = player.GetComponent<Rigidbody2D>();
+            playerRB.velocity = new Vector2(playerRB.velocity.x + 20f, playerRB.velocity.y + 20f);
         }
     }
 }

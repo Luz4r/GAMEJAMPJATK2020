@@ -12,10 +12,14 @@ public class HPPickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            collision.gameObject.GetComponent<HealthSystem>().Heal(healValue);
-            Instantiate(particles, GameObject.FindGameObjectWithTag("Player").transform);
-            collision.gameObject.GetComponent<AudioSource>().PlayOneShot(drinkSound);
-            Destroy(gameObject);
+            HealthSystem hpSystem = collision.gameObject.GetComponent<HealthSystem>();
+            if (hpSystem.currentHP != hpSystem.maxHP)
+            {
+                hpSystem.Heal(healValue);
+                Instantiate(particles, GameObject.FindGameObjectWithTag("Player").transform);
+                collision.gameObject.GetComponent<AudioSource>().PlayOneShot(drinkSound);
+                Destroy(gameObject);
+            }
         }
     }
 }
