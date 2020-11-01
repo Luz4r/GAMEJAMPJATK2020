@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lifespan : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
 
-    public float lifeSpan = 5000;
+    public float lifeSpan = 5000f;
+    public float bulletDamage = 5f;
+
     float bornTime;
     float lifetime;
 
@@ -13,7 +15,6 @@ public class Lifespan : MonoBehaviour
     void Start()
     {
         bornTime = Time.time;
-        
     }
 
     // Update is called once per frame
@@ -22,6 +23,15 @@ public class Lifespan : MonoBehaviour
         lifetime = Time.time - bornTime;
 
         if (lifetime > lifeSpan) {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<HealthSystem>().DealDamage(bulletDamage);
             Destroy(gameObject);
         }
     }

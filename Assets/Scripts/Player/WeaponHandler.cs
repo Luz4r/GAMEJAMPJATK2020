@@ -10,12 +10,15 @@ public class WeaponHandler : MonoBehaviour
     public List<GameObject> bulletPrefabs;
     public ParticleSystem ps;
     PlayerMovement p_playerMovement;
+
+    private Animator anim;
    
 
     // Start is called before the first frame update
     void Start()
     {
-     p_playerMovement = GetComponent<PlayerMovement>();
+        p_playerMovement = GetComponent<PlayerMovement>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,9 +43,9 @@ public class WeaponHandler : MonoBehaviour
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2(-bulletSpeed, rb.velocity.y);
                 Instantiate(ps, bulletSpawnerLeft.transform);
-
-
             }
+
+            anim.SetTrigger("Shoot");
         }
     }
 }
