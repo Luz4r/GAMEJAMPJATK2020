@@ -379,6 +379,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a3d06a487cd0fa94e9107e007cbb8a85, type: 3}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f6c226953dad17c41a041868bb2e98c3, type: 3}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fba88c3cf2ce3a40bfb629aa46e66bc, type: 3}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9faf58f36c397d04981d1fc3f97ce837, type: 3}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f675ef710d207740b782bb5452d5db9, type: 3}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: feedd480f219d994b9b8f640fe871164, type: 3}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 33f6ea15464f72f48b01aa29ec2b500c, type: 3}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: e44c66f934257624ba94b8231eaea16e, type: 3}
+    - target: {fileID: 550752583, guid: aff9863032f733c4f8d2afc5f4000fdf, type: 3}
+      propertyPath: hurtClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1801239392525492160, guid: aff9863032f733c4f8d2afc5f4000fdf,
         type: 3}
       propertyPath: m_Name

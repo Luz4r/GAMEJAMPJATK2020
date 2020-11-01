@@ -8,16 +8,34 @@ public class HealthSystem : MonoBehaviour
     public GameObject gameOver;
 
     private HealthBar healthBar;
+    private AudioSource aSource;
+    private HurtSounds hSounds;
+    private int hurtSoundIndex;
+
     [HideInInspector]
     public float currentHP;
     private void Start()
     {
         healthBar = GetComponentInChildren<HealthBar>();
         currentHP = maxHP;
+        if (CompareTag("Player"))
+        {
+            aSource = GetComponent<AudioSource>();
+            hSounds = GetComponent<HurtSounds>();
+            hurtSoundIndex = 0;
+        }
     }
 
     public void DealDamage(float dmg)
     {
+        if (CompareTag("Player"))
+        {
+            aSource.PlayOneShot(hSounds.hurtClips[hurtSoundIndex++]);
+            if (hurtSoundIndex >= hSounds.hurtClips.Length)
+            {
+                hurtSoundIndex = 0;
+            }
+        }
         if (dmg < currentHP)
         {
             currentHP -= dmg;

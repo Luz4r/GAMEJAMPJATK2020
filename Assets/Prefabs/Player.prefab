@@ -978,6 +978,7 @@ GameObject:
   - component: {fileID: 3647557139260380523}
   - component: {fileID: 9214692748242994858}
   - component: {fileID: 814752727348424615}
+  - component: {fileID: 550752583}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1447,6 +1448,27 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 54009c8821012e2498007533c8c0a301, type: 3}
   - {fileID: 8300000, guid: 57dd13dbb1d999148be7376f255c3ceb, type: 3}
   - {fileID: 8300000, guid: c1e9b14fd7a1a8e4e9d93ef2e76a99f7, type: 3}
+--- !u!114 &550752583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801239392525492160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6006c40120d6e4b499162b77a6725656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtClips:
+  - {fileID: 8300000, guid: a3d06a487cd0fa94e9107e007cbb8a85, type: 3}
+  - {fileID: 8300000, guid: f6c226953dad17c41a041868bb2e98c3, type: 3}
+  - {fileID: 8300000, guid: 4fba88c3cf2ce3a40bfb629aa46e66bc, type: 3}
+  - {fileID: 8300000, guid: 9faf58f36c397d04981d1fc3f97ce837, type: 3}
+  - {fileID: 8300000, guid: 1f675ef710d207740b782bb5452d5db9, type: 3}
+  - {fileID: 8300000, guid: feedd480f219d994b9b8f640fe871164, type: 3}
+  - {fileID: 8300000, guid: 33f6ea15464f72f48b01aa29ec2b500c, type: 3}
+  - {fileID: 8300000, guid: e44c66f934257624ba94b8231eaea16e, type: 3}
 --- !u!1 &1801239393206814922
 GameObject:
   m_ObjectHideFlags: 0
