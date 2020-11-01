@@ -9,16 +9,23 @@ public class WeaponHandler : MonoBehaviour
     public GameObject bulletSpawnerRight;
     public List<GameObject> bulletPrefabs;
     public ParticleSystem ps;
+
+    private AudioSource aSource;
+    private ShootingSounds shootSouds;
+    private int shootSoundIndex;
+
     PlayerMovement p_playerMovement;
 
     private Animator anim;
-   
 
     // Start is called before the first frame update
     void Start()
     {
         p_playerMovement = GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
+        aSource = GetComponent<AudioSource>();
+        shootSouds = GetComponent<ShootingSounds>();
+        shootSoundIndex = 0;
     }
 
     // Update is called once per frame
@@ -43,6 +50,12 @@ public class WeaponHandler : MonoBehaviour
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector2(-bulletSpeed, rb.velocity.y);
                 Instantiate(ps, bulletSpawnerLeft.transform);
+            }
+
+            aSource.PlayOneShot(shootSouds.shootingClips[shootSoundIndex++]);
+            if(shootSoundIndex >= shootSouds.shootingClips.Length)
+            {
+                shootSoundIndex = 0;
             }
 
             anim.SetTrigger("Shoot");
